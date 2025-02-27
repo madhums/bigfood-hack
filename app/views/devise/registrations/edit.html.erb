@@ -1,0 +1,23 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= bootstrap_form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }, inline_errors: false) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= f.email_field :email, autofocus: true %>
+  <%= f.password_field :password, help: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) + (" (Leave blank if you don't want to change it)") %>
+
+  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :current_password, help: "We need your current password to confirm your changes" %>
+  <%= f.primary "Update" %>
+<% end %>
+
+
+<div class="my-5">
+  <h3>Cancel my account</h3>
+
+  <div>
+    Unhappy? <%= button_to "Cancel my account", user_registration_path, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
+
+<%= link_to "Back", :back %>

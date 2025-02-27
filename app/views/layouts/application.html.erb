@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" class="h-100">
+  <head>
+    <title><%= t('application_name') %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="color-scheme" content="light dark">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <%= render "includes/header" %>
+      <div class="container mt-3">
+        <%= render "includes/flash" %>
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>
