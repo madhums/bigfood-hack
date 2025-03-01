@@ -24,3 +24,17 @@ bin/dev
 We use [standardrb](https://github.com/standardrb/standard) for code linting and formatting.
 
 Install the editor extension so that code is formatted as you type
+
+## Rake tasks
+
+In order to populate the metadata in the database
+
+```sh
+rake cbs:fetch_metadata
+```
+
+In order to populate the metadata fields in the database
+
+```sh
+rake cbs:fetch_metafields
+```
