@@ -65,3 +65,8 @@ end
 gem "httparty", "~> 0.22.0"
 
 gem "groupdate", "~> 6.5"
+
+gem "ruby-openai", "~> 7.4"
+
+gem "nokogiri", "~> 1.16"
+gem "httpx", "~> 1.4"

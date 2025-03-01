@@ -1,0 +1,2 @@
+class CbsMetadata < ApplicationRecord
+end

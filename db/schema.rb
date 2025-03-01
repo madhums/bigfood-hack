@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_08_080449) do
+ActiveRecord::Schema[7.1].define(version: 2025_02_28_140253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cbs_metadata", force: :cascade do |t|
+    t.string "title"
+    t.string "short_title"
+    t.string "summary"
+    t.string "language"
+    t.integer "period"
+    t.string "description"
+    t.jsonb "raw"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "identifier"
+  end
+
+  create_table "cbs_metafields", force: :cascade do |t|
+    t.string "title"
+    t.string "key"
+    t.string "description"
+    t.jsonb "raw"
+    t.bigint "cbs_metadata_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cbs_metadata_id"], name: "index_cbs_metafields_on_cbs_metadata_id"
+  end
 
   create_table "solid_queue_blocked_executions", force: :cascade do |t|
     t.bigint "job_id", null: false
@@ -163,6 +188,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_080449) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cbs_metafields", "cbs_metadata", column: "cbs_metadata_id"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
