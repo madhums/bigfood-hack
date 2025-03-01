@@ -56,17 +56,6 @@ group :development do
   gem "dockerfile-rails", ">= 1.6"
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-end
-
-gem "httparty", "~> 0.22.0"
-
-gem "groupdate", "~> 6.5"
-
 gem "ruby-openai", "~> 7.4"
-
 gem "nokogiri", "~> 1.16"
 gem "httpx", "~> 1.4"
